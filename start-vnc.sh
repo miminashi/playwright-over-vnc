@@ -11,6 +11,7 @@ fi
 export DISPLAY=:1
 
 # 2) Xvfb 起動（UNIX ソケットは有効のまま、TCP は閉じる）
+rm -f /tmp/.X1-lock
 Xvfb :1 -screen 0 1280x1024x24 -ac -nolisten tcp >/tmp/xvfb.log 2>&1 &
 XVFB_PID=$!
 
@@ -37,5 +38,5 @@ VNC_PID=$!
 NOVNC_PID=$!
 
 # 8) どれかが落ちたら終了（必要なら監視/再起動を追加）
-wait -n "$XVFB_PID" "$FLUX_PID" "$PW_PID" "$VNC_PID" "$NOVNC_PID" &
-tail -f /tmp/*.log
+tail -f /tmp/*.log &
+wait -n
