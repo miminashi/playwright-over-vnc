@@ -1,0 +1,21 @@
+{
+  "module": "esnext",
+  "name": "playwright-client-connect-remote-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "tsc -p . --outDir dist && node ./dist/main.mjs"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.18.3",
+  "dependencies": {
+    "playwright-core": "^1.56.1",
+    "typescript": "^5.9.3"
+  },
+  "devDependencies": {
+    "@types/node": "^24.10.0"
+  }
+}
