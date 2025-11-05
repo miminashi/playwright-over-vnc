@@ -17,19 +17,23 @@ RUN apt-get update && apt-get install -y \
 
 RUN npm install -g playwright
 
-RUN mkdir -p /root/.vnc \
+RUN mkdir -p /home/pwuser/.vnc \
     && mkdir -p /opt/bin \
     && mkdir -p /app
 
 # Set up VNC password
-RUN x11vnc -storepasswd password /root/.vnc/passwd
+RUN x11vnc -storepasswd password /home/pwuser/.vnc/passwd
 
 COPY start-vnc.sh /opt/bin/
-COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+
 
 
 # Set working directory
 WORKDIR /app
+
+USER pwuser
+
+COPY .xinitrc /home/pwuser/
 
 # Start supervisor
 CMD ["/opt/bin/start-vnc.sh"]

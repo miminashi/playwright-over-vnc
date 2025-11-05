@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Start Xvfb with consistent display (matches environment variable in Dockerfile)
-Xvfb :1 -screen 0 1920x1080x24 &
+xvfb-run -e /dev/stdout -s "-screen 0 1280x1024x24 -ac -nolisten tcp -nolisten unix" "playwright open https://blog.sh1ma.dev"  &
 
 # Display is already set as ENV in Dockerfile
 
