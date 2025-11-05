@@ -1,12 +1,8 @@
 import { chromium } from "playwright-core"
 
-const browserServer = await chromium.launchServer({
-  headless: false,
-})
+console.log("Start")
 
-const wsEndpoint = browserServer.wsEndpoint()
-
-const browser = await chromium.connect(wsEndpoint)
+const browser = await chromium.connect("ws://localhost:2222/connect")
 
 const context = await browser.newContext({
   baseURL: "https://blog.sh1ma.dev",
@@ -20,4 +16,3 @@ console.log(await page.title())
 // clean up
 await browser.close()
 await context.close()
-await browserServer.close()

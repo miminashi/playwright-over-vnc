@@ -17,6 +17,10 @@ RUN apt-get update && apt-get install -y \
 
 RUN npm install -g playwright
 
+RUN mkdir -p /tmp/.X11-unix \
+    && chown root:root /tmp/.X11-unix \
+    && chmod 1777 /tmp/.X11-unix
+
 RUN mkdir -p /home/pwuser/.vnc \
     && mkdir -p /opt/bin \
     && mkdir -p /app
@@ -31,9 +35,8 @@ COPY start-vnc.sh /opt/bin/
 # Set working directory
 WORKDIR /app
 
+COPY playwright-server-config.json /app/
+
 USER pwuser
 
-COPY .xinitrc /home/pwuser/
-
-# Start supervisor
 CMD ["/opt/bin/start-vnc.sh"]
