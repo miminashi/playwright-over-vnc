@@ -38,5 +38,5 @@ VNC_PID=$!
 NOVNC_PID=$!
 
 # 8) どれかが落ちたら終了（必要なら監視/再起動を追加）
-tail -f /tmp/*.log &
-wait -n
+wait -n "$XVFB_PID" "$FLUX_PID" "$PW_PID" "$VNC_PID" "$NOVNC_PID" &
+tail -f /tmp/*.log
