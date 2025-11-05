@@ -11,3 +11,9 @@ docker compose up
 2. Access By Web Browser
 
 http://localhost:6080/vnc.html
+
+3. Execute main.ts
+
+```
+npm run start
+```
