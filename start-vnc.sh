@@ -11,7 +11,6 @@ fi
 export DISPLAY=:1
 
 # 2) Xvfb 起動（UNIX ソケットは有効のまま、TCP は閉じる）
-rm -f /tmp/.X1-lock
 Xvfb :1 -screen 0 1280x1024x24 -ac -nolisten tcp >/tmp/xvfb.log 2>&1 &
 XVFB_PID=$!
 
