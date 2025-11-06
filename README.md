@@ -14,8 +14,7 @@ http://localhost:6080/vnc.html
 
 3. Execute playwright example
 
-```sh
-cd  examples/hello-playwright-ts
-npm install
-npm run start
-```
+See the README in each example directory for how to run the sample code.
+
+- [TypeScript Example](./examples/hello-playwright-ts/README.md)
+- [Python Example](./examples/hello-playwright-python/README.md)
