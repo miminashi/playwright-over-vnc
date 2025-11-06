@@ -1,3 +1,5 @@
+[日本語](./README.ja.md)
+
 # playwright-over-vnc
 
 ## How to Run
